@@ -21,7 +21,7 @@ Demonstrates practical IR quality improvements (re-ranking), experiment tracking
 - **Observability:** LangSmith traces/evals + MLflow metrics/runs + KFP pipeline (build → eval).
 - **Kubernetes:** FastAPI on Minikube with PVC-backed model cache and hostPath index mount.
 - **Automation:** KFP pipeline: build index → run eval; MLflow logs metrics for each run.
-- 
+  
 ---
 
 ## Architecture

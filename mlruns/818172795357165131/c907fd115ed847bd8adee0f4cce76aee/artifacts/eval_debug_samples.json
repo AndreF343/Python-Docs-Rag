@@ -1,0 +1,35 @@
+[
+  {
+    "query": "proxy . _callmethod ( methodname , args , kwds ) will evaluate the expression getattr ( obj , methodname )(",
+    "truth": "https://docs.python.org/3/library/multiprocessing.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/multiprocessing.html",
+      "https://docs.python.org/3/howto/descriptor.html",
+      "https://docs.python.org/3/library/typing.html",
+      "https://docs.python.org/3/library/weakref.html",
+      "https://docs.python.org/3/howto/descriptor.html"
+    ]
+  },
+  {
+    "query": "Raises InvalidWriteError if this would write a representation which cannot be accurately parsed by a future read() call from this",
+    "truth": "https://docs.python.org/3/library/configparser.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/configparser.html",
+      "https://docs.python.org/3/library/codeop.html",
+      "https://docs.python.org/3/library/asyncio-future.html",
+      "https://docs.python.org/3/library/concurrent.futures.html",
+      "https://docs.python.org/3/library/importlib.html"
+    ]
+  },
+  {
+    "query": "are finite, x is negative, and y is not an integer then pow(x, y) is undefined, and raises ValueError .",
+    "truth": "https://docs.python.org/3/library/math.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/math.html",
+      "https://docs.python.org/3/library/math.html",
+      "https://docs.python.org/3/library/math.html",
+      "https://docs.python.org/3/library/math.html",
+      "https://docs.python.org/3/reference/expressions.html"
+    ]
+  }
+]

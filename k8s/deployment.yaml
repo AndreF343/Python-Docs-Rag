@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-docs-api
+  namespace: py-docs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: py-docs-api
+  template:
+    metadata:
+      labels:
+        app: py-docs-api
+    spec:
+      containers:
+        - name: api
+          image: py-docs-api:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            - name: INDEX_DIR
+              value: /workspace/data/index/chroma
+            - name: COLLECTION_NAME
+              value: py_docs
+            - name: EMBED_MODEL
+              value: sentence-transformers/all-MiniLM-L6-v2
+            - name: CROSS_ENCODER_MODEL
+              value: cross-encoder/ms-marco-MiniLM-L-6-v2
+            - name: ANONYMIZED_TELEMETRY
+              value: "false"
+            - name: HF_HOME
+              value: /models
+            - name: SENTENCE_TRANSFORMERS_HOME
+              value: /models
+            - name: TRANSFORMERS_CACHE
+              value: /models
+          volumeMounts:
+            - name: host-workspace
+              mountPath: /workspace
+              readOnly: false
+            - name: models-cache
+              mountPath: /models
+            - name: models-pv
+              mountPath: /models
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+      volumes:
+        - name: host-workspace
+          hostPath:
+            path: /workspace   # this path exists in the Minikube VM due to `minikube mount`
+            type: Directory
+        # - name: models-cache
+        #   emptyDir: {}
+        - name: models-pv
+          persistentVolumeClaim:
+            claimName: models-pvc

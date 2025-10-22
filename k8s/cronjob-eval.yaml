@@ -1,0 +1,51 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: py-docs-eval
+  namespace: py-docs
+spec:
+  schedule: "0 3 * * *"   # every day at 03:00
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: eval
+              image: py-docs-api:local
+              imagePullPolicy: Never
+              workingDir: /workspace
+              command: ["python", "scripts/eval_retrieval_rerank_raw_mlflow.py"]
+              env:
+                - name: PYTHONPATH
+                  value: /workspace
+                - name: HF_HOME
+                  value: /models
+                - name: SENTENCE_TRANSFORMERS_HOME
+                  value: /models
+                - name: TRANSFORMERS_CACHE
+                  value: /models
+                - name: K_RETRIEVE
+                  value: "20"
+                - name: K_FINAL
+                  value: "5"
+                - name: EMBED_MODEL
+                  value: sentence-transformers/all-MiniLM-L6-v2
+                - name: CROSS_ENCODER_MODEL
+                  value: cross-encoder/ms-marco-MiniLM-L-6-v2
+              volumeMounts:
+                - name: host-workspace
+                  mountPath: /workspace
+                - name: models-cache
+                  mountPath: /models
+          volumes:
+            - name: host-workspace
+              hostPath:
+                path: /workspace
+                type: Directory
+            - name: models-cache
+              emptyDir: {}

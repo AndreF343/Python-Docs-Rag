@@ -1,0 +1,16 @@
+__pycache__/
+.venv/
+.git/
+.gitignore
+*.pyc
+*.log
+.cache/
+.pytest_cache
+.benchmarks
+**/.cache/
+data/index/
+data/raw_html/
+data/tmp/
+mlruns/
+models/
+*.sqlite3

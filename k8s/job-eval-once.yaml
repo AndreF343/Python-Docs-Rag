@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: py-docs-eval-once
+  namespace: py-docs
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: eval
+          image: py-docs-api:local       # use the tag you built inside minikube
+          imagePullPolicy: Never
+          workingDir: /workspace
+          command: ["python", "scripts/eval_retrieval_rerank_raw_mlflow.py"]
+          env:
+            - name: PYTHONPATH
+              value: /workspace
+            - name: HF_HOME
+              value: /models
+            - name: SENTENCE_TRANSFORMERS_HOME
+              value: /models
+            - name: TRANSFORMERS_CACHE
+              value: /models
+          volumeMounts:
+            - name: host-workspace
+              mountPath: /workspace
+            - name: models-cache
+              mountPath: /models
+      volumes:
+        - name: host-workspace
+          hostPath:
+            path: /workspace   # provided by `minikube mount` you already run
+            type: Directory
+        - name: models-cache
+          emptyDir: {}

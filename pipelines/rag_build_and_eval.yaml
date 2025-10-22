@@ -1,0 +1,68 @@
+# PIPELINE DEFINITION
+# Name: py-docs-build-and-eval
+components:
+  comp-build-index-comp:
+    executorLabel: exec-build-index-comp
+  comp-eval-comp:
+    executorLabel: exec-eval-comp
+deploymentSpec:
+  executors:
+    exec-build-index-comp:
+      container:
+        command:
+        - python
+        - scripts/build_index.py
+        image: py-docs-pipeline:local
+    exec-eval-comp:
+      container:
+        command:
+        - python
+        - scripts/eval_retrieval_rerank_raw_mlflow.py
+        env:
+        - name: MLFLOW_TRACKING_URI
+          value: file:///mlruns
+        - name: HF_HOME
+          value: /models
+        - name: SENTENCE_TRANSFORMERS_HOME
+          value: /models
+        - name: TRANSFORMERS_CACHE
+          value: /models
+        image: py-docs-pipeline:local
+pipelineInfo:
+  name: py-docs-build-and-eval
+root:
+  dag:
+    tasks:
+      build-index-comp:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-build-index-comp
+        taskInfo:
+          name: build-index-comp
+      eval-comp:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-eval-comp
+        dependentTasks:
+        - build-index-comp
+        taskInfo:
+          name: eval-comp
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.13.0
+---
+platforms:
+  kubernetes:
+    deploymentSpec:
+      executors:
+        exec-build-index-comp:
+          pvcMount:
+          - constant: models-pvc
+            mountPath: /models
+        exec-eval-comp:
+          pvcMount:
+          - constant: models-pvc
+            mountPath: /models
+          - constant: mlruns-pvc
+            mountPath: /mlruns

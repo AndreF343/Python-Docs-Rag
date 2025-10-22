@@ -1,0 +1,19 @@
+artifact_path: file:///C:/Users/andre/Desktop/MLFlow Project/ai-docs-rag/mlruns/1/models/m-28b59f2ca33243dd8d2c0b8a50aed73f/artifacts
+flavors:
+  python_function:
+    cloudpickle_version: 3.1.1
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.8
+    streamable: false
+mlflow_version: 3.4.0
+model_id: m-28b59f2ca33243dd8d2c0b8a50aed73f
+model_size_bytes: 2003
+model_uuid: m-28b59f2ca33243dd8d2c0b8a50aed73f
+prompts: null
+run_id: 734c023ddae74546905ae4b19d7504c3
+utc_time_created: '2025-10-18 14:39:33.520955'

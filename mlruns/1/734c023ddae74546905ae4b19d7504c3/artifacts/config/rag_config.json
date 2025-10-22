@@ -1,0 +1,8 @@
+{
+  "index_dir": "C:\\Users\\andre\\Desktop\\MLFlow Project\\ai-docs-rag\\data\\index\\chroma",
+  "collection": "py_docs",
+  "embed_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "cross_encoder": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "k_retrieve": 20,
+  "k_final": 5
+}

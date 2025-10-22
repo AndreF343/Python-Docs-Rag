@@ -1,0 +1,35 @@
+# Core for data collection & preprocessing
+requests
+beautifulsoup4
+lxml
+html5lib
+tqdm
+
+# Chunking / analysis helpers
+numpy
+
+# ===== (when we move to retrieval/RAG) =====
+# langchain
+# langchain-community
+chromadb
+
+# ===== (when we add API) =====
+fastapi==0.115.4
+uvicorn[standard]==0.30.6
+sentence-transformers==3.1.1
+pydantic
+
+# ===== (experiments/registry) =====
+mlflow
+
+
+kfp==2.13
+kfp-kubernetes
+
+langsmith
+
+pytest==8.3.3
+httpx
+streamlit
+
+rankbm25

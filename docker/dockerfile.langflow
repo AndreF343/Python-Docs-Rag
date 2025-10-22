@@ -1,0 +1,22 @@
+# 1. Single Python runtime
+FROM python:3.11-slim
+
+# 2. System deps (fast + small)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential curl && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    HF_HOME=/workspace/.cache/huggingface \
+    ANONYMIZED_TELEMETRY=false
+
+# 3. Install LangFlow & your extras with the SAME interpreter
+RUN python -m pip install --no-cache-dir --upgrade pip wheel setuptools
+RUN python -m pip install --no-cache-dir langflow
+COPY requirements.langflow.txt /tmp/requirements.langflow.txt
+RUN python -m pip install --no-cache-dir -r /tmp/requirements.langflow.txt
+
+# 4. Working dir and startup
+WORKDIR /workspace
+EXPOSE 7860
+CMD ["python", "-m", "langflow", "run", "--host", "0.0.0.0", "--port", "7860"]

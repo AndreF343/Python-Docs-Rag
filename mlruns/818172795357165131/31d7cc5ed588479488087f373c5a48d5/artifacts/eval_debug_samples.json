@@ -1,0 +1,35 @@
+[
+  {
+    "query": "side effect it affects the entire program. Saving and restoring it is almost as bad: it is expensive and affects",
+    "truth": "https://docs.python.org/3/library/locale.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/locale.html",
+      "https://docs.python.org/3/library/exceptions.html",
+      "https://docs.python.org/3/library/idle.html",
+      "https://docs.python.org/3/library/sys.html",
+      "https://docs.python.org/3/library/site.html"
+    ]
+  },
+  {
+    "query": "attaches the value to the new list. When keys are encountered again, the look-up proceeds normally (returning the list for",
+    "truth": "https://docs.python.org/3/library/collections.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/collections.html",
+      "https://docs.python.org/3/library/collections.html",
+      "https://docs.python.org/3/reference/expressions.html",
+      "https://docs.python.org/3/library/stdtypes.html",
+      "https://docs.python.org/3/library/operator.html"
+    ]
+  },
+  {
+    "query": ", ( i , 8 )) for i in range ( 10 )] # Create queues task_queue = Queue ()",
+    "truth": "https://docs.python.org/3/library/multiprocessing.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/multiprocessing.html",
+      "https://docs.python.org/3/library/asyncio-queue.html",
+      "https://docs.python.org/3/library/multiprocessing.html",
+      "https://docs.python.org/3/library/multiprocessing.html",
+      "https://docs.python.org/3/library/queue.html"
+    ]
+  }
+]

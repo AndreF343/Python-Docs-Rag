@@ -1,0 +1,35 @@
+[
+  {
+    "query": "16, 30) >>> # Using datetime.timetuple() to get tuple of all attributes >>> tt = dt . timetuple () >>>",
+    "truth": "https://docs.python.org/3/library/datetime.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/datetime.html",
+      "https://docs.python.org/3/library/datetime.html",
+      "https://docs.python.org/3/library/datetime.html",
+      "https://docs.python.org/3/library/datetime.html",
+      "https://docs.python.org/3/library/datetime.html"
+    ]
+  },
+  {
+    "query": "which must be one of the PROTOCOL_* constants defined in this module. The parameter specifies which version of the SSL",
+    "truth": "https://docs.python.org/3/library/ssl.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/ssl.html",
+      "https://docs.python.org/3/library/ssl.html",
+      "https://docs.python.org/3/library/ssl.html",
+      "https://docs.python.org/3/library/ssl.html",
+      "https://docs.python.org/3/library/ssl.html"
+    ]
+  },
+  {
+    "query": "security privilege. Note that privileges are different than permissions \u00e2\u0080\u0093 see the Conflicts Between User Rights and Permissions documentation for",
+    "truth": "https://docs.python.org/3/library/winreg.html",
+    "top_urls": [
+      "https://docs.python.org/3/library/winreg.html",
+      "https://docs.python.org/3/howto/remote_debugging.html",
+      "https://docs.python.org/3/library/winreg.html",
+      "https://docs.python.org/3/library/exceptions.html",
+      "https://docs.python.org/3/library/stat.html"
+    ]
+  }
+]

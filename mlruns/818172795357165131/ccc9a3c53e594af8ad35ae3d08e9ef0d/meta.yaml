@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/andre/Desktop/MLFlow%20Project/ai-docs-rag/mlruns/818172795357165131/ccc9a3c53e594af8ad35ae3d08e9ef0d/artifacts
+end_time: 1760803960565
+entry_point_name: ''
+experiment_id: '818172795357165131'
+lifecycle_stage: active
+run_id: ccc9a3c53e594af8ad35ae3d08e9ef0d
+run_name: eval_rerank_raw
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760796385055
+status: 3
+tags: []
+user_id: root

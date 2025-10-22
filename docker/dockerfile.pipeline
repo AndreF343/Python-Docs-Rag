@@ -1,0 +1,9 @@
+# Reuse your API/runtime image that already has Python + deps
+FROM py-docs-api:local
+
+# Put your repo under /workspace for pipeline steps
+WORKDIR /workspace
+COPY . /workspace
+
+# Default no-op
+CMD ["python", "-c", "print('pipeline image ready')"]

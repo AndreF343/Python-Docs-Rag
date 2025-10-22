@@ -1,0 +1,4 @@
+# For LangFlow container (CPU)
+torch --index-url https://download.pytorch.org/whl/cpu
+sentence-transformers==3.1.1
+langchain-chroma==0.2.6

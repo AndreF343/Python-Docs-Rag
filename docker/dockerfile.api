@@ -1,0 +1,22 @@
+FROM python:3.11-slim
+
+# System deps
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PYTHONUNBUFFERED=1 \
+    HF_HOME=/workspace/.cache/huggingface \
+    ANONYMIZED_TELEMETRY=false
+
+WORKDIR /app
+
+# API dependencies only (leave collector image untouched)
+COPY requirements.txt /app/requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade pip wheel setuptools && \
+    python -m pip install --no-cache-dir -r /app/requirements.txt
+
+COPY app /app/app
+
+EXPOSE 8000
+CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

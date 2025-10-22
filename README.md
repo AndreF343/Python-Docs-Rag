@@ -15,7 +15,7 @@ Demonstrates practical IR quality improvements (re-ranking), experiment tracking
 
 ## Notable Features and Tools
 
-- Quality (example): `Recall@5 ≈ 0.xx–0.xx`, `MRR@5 ≈ 0.xx–0.xx` on a 300-query set (update with your final numbers).
+- **Quality (example):** `Recall@5 ≈ 0.xx–0.xx`, `MRR@5 ≈ 0.xx–0.xx` on a 300-query set (update with your final numbers).
 - **Hybrid retrieval:** BM25 + vectors with **Reciprocal Rank Fusion** improves exact-keyword/symbol queries.
 - **Answer synthesis w/ citations:** Local **Ollama** model (e.g., `qwen2.5:7b`) on **compressed** context for speed and faithfulness.
 - **Observability:** LangSmith traces/evals + MLflow metrics/runs + KFP pipeline (build → eval).

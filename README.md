@@ -20,12 +20,8 @@ Demonstrates practical IR quality improvements (re-ranking), experiment tracking
 - **Answer synthesis w/ citations:** Local **Ollama** model (e.g., `qwen2.5:7b`) on **compressed** context for speed and faithfulness.
 - **Observability:** LangSmith traces/evals + MLflow metrics/runs + KFP pipeline (build → eval).
 - **Kubernetes:** FastAPI on Minikube with PVC-backed model cache and hostPath index mount.
-
-- **Quality:** Recall@5 ≈ _your_latest_ (with re-rank); baseline without re-rank was lower.
 - **Automation:** KFP pipeline: build index → run eval; MLflow logs metrics for each run.
-- **Observability:** LangSmith traces and dataset-driven eval; MLflow experiment history.
-- **Kubernetes:** FastAPI served on Minikube with PVC-backed model cache and hostPath for index.
-
+- 
 ---
 
 ## Architecture
